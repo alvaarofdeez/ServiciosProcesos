@@ -42,7 +42,7 @@ public class LanzarEjercicioRepaso {
         return opcion;
     }
 
-    public static void lanzarProceso(int opcion, String txt, String nombreFichero) throws IOException {
+    public static void lanzarProceso(String txt, String nombreFichero) throws IOException {
         String clase = "EjercicioRepaso.java";
         File carpeta = new File("C:\\Users\\Alvaro\\Documents\\NetBeansProjects\\ServiciosYProcesos\\src\\UD1");
 
@@ -50,7 +50,6 @@ public class LanzarEjercicioRepaso {
         try {
             pb = new ProcessBuilder("java",
                     clase,
-                    Integer.toString(opcion),
                     txt);
             pb.directory(carpeta);
             pb.redirectError(new File("errores.txt"));
@@ -78,7 +77,7 @@ public class LanzarEjercicioRepaso {
                         System.out.println("No existe texto.");
                         opcion = 0;
                     } else {
-                        lanzarProceso(opcion, texto, "resultado.txt");
+                        lanzarProceso(texto, "resultado.txt");
                     }
                     break;
                 case 3:

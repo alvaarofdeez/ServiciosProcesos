@@ -24,8 +24,7 @@ public class EjercicioRepaso {
     }
     
     public static void main(String[] args) {
-        String opcion = args[0];
-        String texto = args[1];
+        String texto = args[0];
         
         if (texto.equals("")){
             System.out.println("No existe texto.");
