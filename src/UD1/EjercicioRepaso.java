@@ -10,13 +10,6 @@ import java.io.InputStreamReader;
  */
 public class EjercicioRepaso {
     
-    public String leerTexto() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Inserta cadena de texto: ");
-        String texto = br.readLine();
-        return texto;
-    }
-    
     public static void recorrerTexto(String texto) {
         for (int i = 0; i < texto.length(); i++) {
             System.out.println("Letra " + (i + 1) + ": " + texto.substring(i, (i + 1)));
