@@ -11,9 +11,14 @@ import java.io.InputStreamReader;
  */
 public class LanzarEjercicioRepaso {
 
-    final static LanzarEjercicioRepaso objUno = new LanzarEjercicioRepaso();
+    public static String leerTexto() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Inserta cadena de texto: ");
+        String texto = br.readLine();
+        return texto;
+    }
 
-    public int menu() throws IOException {
+    public static int menu() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         boolean bandera = true;
         int opcion = 0;
@@ -37,9 +42,7 @@ public class LanzarEjercicioRepaso {
         return opcion;
     }
 
-    public static void lanzarProceso(String ruta) throws IOException {
-        int opcion = objUno.menu();
-
+    public static void lanzarProceso(int opcion, String txt, String nombreFichero) throws IOException {
         String clase = "EjercicioRepaso.java";
         File carpeta = new File("C:\\Users\\Alvaro\\Documents\\NetBeansProjects\\ServiciosYProcesos\\src\\UD1");
 
@@ -48,16 +51,43 @@ public class LanzarEjercicioRepaso {
             pb = new ProcessBuilder("java",
                     clase,
                     Integer.toString(opcion),
-                    ruta);
+                    txt);
             pb.directory(carpeta);
             pb.redirectError(new File("errores.txt"));
-            pb.redirectOutput(new File("resultadoEjercicioRepaso.txt"));
+            pb.redirectOutput(new File(nombreFichero));
+            
+            pb.start();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
 
     public static void main(String[] args) throws IOException {
-        lanzarProceso("C:\\Users\\Alvaro\\Desktop");
+        int opcion = 0;
+        String texto = "";
+
+        do {
+            opcion = menu();
+            switch (opcion) {
+                case 1:
+                    texto = leerTexto();
+                    opcion = 0;
+                    break;
+                case 2:
+                    if (texto.equals("")) {
+                        System.out.println("No existe texto.");
+                        opcion = 0;
+                    } else {
+                        lanzarProceso(opcion, texto, "resultado.txt");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Saliendo...");
+                    break;
+            }
+        } while (opcion == 0);
     }
 }
