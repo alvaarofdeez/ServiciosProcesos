@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package UD2;
+package UD2.Ejemplos;
 
 /**
  * Clase que sirve de ejemplo de un Thread
