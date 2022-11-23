@@ -6,8 +6,8 @@ public class Ejercicio5 {
 
     static class Primero extends Thread {
 
-        Primero(String str) {
-            setName(str);
+        public Primero(String str) {
+            super(str);
         }
 
         @Override
@@ -26,7 +26,7 @@ public class Ejercicio5 {
     static class Segundo extends Thread {
 
         public Segundo(String str) {
-            setName(str);
+            super(str);
         }
 
         @Override

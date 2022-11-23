@@ -14,7 +14,7 @@ public class Ejercicio2 {
 
         private int c = 0;
 
-        Contador(int c) {
+        public Contador(int c) {
             this.c = c;
         }
 
